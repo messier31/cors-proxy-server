@@ -1,0 +1,23 @@
+{
+  "name": "cors-proxy-server",
+  "version": "1.0.0",
+  "description": "CORS proxy server implemented by the spec",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/messier31/cors-proxy-server.git"
+  },
+  "author": "Svetlana Linuxenko <linuxenko@yahoo.com> (http://www.linuxenko.pro)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/messier31/cors-proxy-server/issues"
+  },
+  "homepage": "https://github.com/messier31/cors-proxy-server#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "request": "^2.72.0"
+  }
+}
