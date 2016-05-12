@@ -6,5 +6,5 @@
 
 <br />
 
-> Built with [CORS PROXY SPEC](https://github.com/messier31/cors-proxy-spec) support.
+> Built with [CORS PROXY SPEC](https://github.com/messier31/cors-proxy-spec) support. [Demo](https://secret-ocean-49799.herokuapp.com)
 
