@@ -1,0 +1,12 @@
+{
+  "name": "cors-proxy-server",
+  "description": "Built with CORS PROXY SPEC support.",
+  "website": "https://github.com/messier31/cors-proxy-server",
+  "repository": "https://github.com/messier31/cors-proxy-server.git",
+  "keywords": [
+    "cors",
+    "proxy",
+    "server",
+    "heroku"
+  ]
+}
