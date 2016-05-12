@@ -3,7 +3,7 @@ var http = require('http');
 var request = require('request');
 
 var urlRegex = /^https?/;
-var limit = process.env.LIMIT || 9999999999 * 1024;
+var limit = process.env.LIMIT || 512 * 1024;
 var copyHeaders = ['user-agent', 'content-type'];
 
 
