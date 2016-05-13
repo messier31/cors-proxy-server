@@ -20,23 +20,34 @@ function createRequesHeaders(headers) {
 }
 
 function wrongURI(res) {
-  res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-type', 'text/html');
   res.writeHead(404);
-  res.end('<h1>Wrong request.</h1>For more info check out the spec:' +
-  ' <a href="https://github.com/messier31/cors-proxy-spec">https://github.com/messier31/cors-proxy-spec</a>');
+  res.end('<h1>Wrong request.</h1><p>For more info check out the spec:' +
+  ' <a href="https://github.com/messier31/cors-proxy-spec">https://github.com/messier31/cors-proxy-spec</a></p>');
+}
+
+function banner(res) {
+  res.setHeader('Content-type', 'text/html');
+  res.writeHead(200);
+  res.end('<h1>CORS PROXY SERVER</h1><p><a href="https://github.com/messier31/cors-proxy-server">' +
+    'https://github.com/messier31/cors-proxy-server</a></p>');
 }
 
 function limitExceed(res) {
-  //res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Content-type', 'text/html');
   res.writeHead(403);
-  res.end('<h1>Limit Exceed.</h1> Exceed limit of '+ limit + ' bytes.');
+  res.end('<h1>Limit Exceed.</h1><p>Exceed limit of '+ limit + ' bytes.</p>');
 }
 
 http.createServer(function (req, res) {
   var url = req.url.slice(1);
 
   if (!urlRegex.test(url)) {
-    wrongURI(res);
+    if (url.length < 1) {
+      banner(res);
+    } else {
+      wrongURI(res);
+    }
     return;
   }
 
@@ -54,10 +65,16 @@ http.createServer(function (req, res) {
   var size = 0;
 
   var client = request(options, function(error, response, body) {
-    res.setHeader('Content-type', response.headers['content-type'] || 'text/plain');
-    res.setHeader('Date', response.headers['date'] || new Date().toString());
-    res.write(body);
-    res.end();
+    if (!error) {
+      res.setHeader('Content-type', response.headers['content-type'] || 'text/plain');
+      res.setHeader('Date', response.headers['date'] || new Date().toString());
+      res.writeHead(Number(response.statusCode));
+      res.write(body);
+      res.end();
+    } else {
+      res.writeHead(500);
+      res.end('err');
+    }
   });
 
   client.on('data', function(chunk) {
