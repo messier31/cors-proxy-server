@@ -49,7 +49,7 @@ function limitExceed(res) {
 function limitRequestsBanner(res) {
   res.setHeader('Content-type', 'text/html');
   res.writeHead(429);
-  res.end('<h1>Rests Limit.</h1><p>Exceed limit of '+ requestsLimit + ' requests per 10sec.</p>');
+  res.end('<h1>Requests Limit.</h1><p>Exceed limit of '+ requestsLimit + ' requests per 10sec.</p>');
 }
 
 function limitRequests(req, time) {
